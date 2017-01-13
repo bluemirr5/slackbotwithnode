@@ -1,0 +1,24 @@
+{
+  "name": "slackbot",
+  "version": "1.0.0",
+  "description": "presidentkim slackbot",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bluemirr5/slackbotwithnode.git"
+  },
+  "dependencies": {
+    "hapi": "^16.1.0",
+    "sync-request": "^4.0.1",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "slackbot"
+  ],
+  "author": "gs.won",
+  "license": "MIT"
+}
