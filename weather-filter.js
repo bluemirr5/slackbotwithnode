@@ -6,24 +6,25 @@ const parser = new xml2js.Parser();
 
 const weatherFilter = function(payload) {
     if (payload.pureText.includes("weather") || payload.pureText.includes("날씨")) {
-        var res = request('GET', weatherApiUrl);
-        var xml = res.body.toString('utf-8');
+        const res = request('GET', weatherApiUrl);
+        const xml = res.body.toString('utf-8');
         // var data = parser.parseStringSync(xml);
         // console.log(data);
-        var ret = "```";
+        let ret = "```";
         parser.parseString(xml, function(err, result) {
-          var locations = result.rss.channel[0].item[0].description[0].body[0].location;
-          var selectedLocation;
-          for (var i in locations) {
-            var location = locations[i];
+          let i;
+            const locations = result.rss.channel[0].item[0].description[0].body[0].location;
+          let selectedLocation;
+          for (i in locations) {
+            const location = locations[i];
             if(location.city == '서울') {
               selectedLocation = location;
               break;
             }
           }
 
-          for (var i in selectedLocation.data) {
-            var unit = selectedLocation.data[i];
+          for (i in selectedLocation.data) {
+            const unit = selectedLocation.data[i];
             ret += convertApiModel2String(unit);
           }
         });
@@ -33,13 +34,13 @@ const weatherFilter = function(payload) {
         return null;
     }
 };
-var dup = {};
+let dup = {};
 
 function convertApiModel2String(unit) {
-  var ret = "";
-  var dateObj = new Date(unit.tmEf);
-  var month = dateObj.getMonth()+1;
-  var date = dateObj.getDate();
+  let ret = "";
+  const dateObj = new Date(unit.tmEf);
+  const month = dateObj.getMonth() + 1;
+  const date = dateObj.getDate();
   if(!dup[month + ":" + date]) {
     ret = month + "월 " + date + "일 ";
     ret += ": ";

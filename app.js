@@ -16,13 +16,12 @@ server.route({
     method: 'POST',
     path:'/bot',
     handler: function (request, reply) {
-      var payload = request.payload;
-      var text = payload.text;
-      var pureText = text.replace(payload.trigger_word, "");
-      payload.pureText = pureText;
-      var retText = weather(payload);
-      var ret = {
-        text: retText
+      const payload = request.payload;
+      const text = payload.text;
+      payload.pureText = text.replace(payload.trigger_word, "");
+      const retText = weather(payload);
+      const ret = {
+          text: retText
       };
       return reply(ret);
     }
