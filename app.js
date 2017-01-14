@@ -2,7 +2,7 @@
 'use strict';
 
 const Hapi = require('hapi');
-const weather = require('./weather-filter.js')
+const weather = require('./weather-filter.js');
 
 // Create a server with a host and port
 const server = new Hapi.Server();
